@@ -25,5 +25,16 @@ class CompanyTextViewSet(viewsets.ReadOnlyModelViewSet):
     def terms_and_conditions(self, request, *args, **kwargs):
         terms_and_conditions = CompanyText.terms_and_conditions()
         if terms_and_conditions:
-            return Response(self.serializer_class(instance=terms_and_conditions).data, status=200)
+            return Response(
+                self.serializer_class(instance=terms_and_conditions).data, status=200
+            )
         return Response({}, status=200)
+
+
+class CompanyTextViewSet(viewsets.ModelViewSet):
+    serializer_class = CompanyTextSerializer
+    authentication_classes = (
+        authentication.SessionAuthentication,
+        authentication.TokenAuthentication,
+    )
+    queryset = CompanyText.objects.all()
