@@ -14,22 +14,6 @@ class CompanyText(models.Model):
 
     @classmethod
     def terms_and_conditions(cls):
-        return cls.objects.filter(title__iexact="Terms and Conditions").first()
-
-    @classmethod
-    def privacy_policy(cls):
-        return cls.objects.filter(title__iexact="Privacy Policy").first()
-
-    @classmethod
-    def terms_and_conditions(cls):
-        return cls.objects.filter(title__iexact="Terms and Conditions").first()
-
-    @classmethod
-    def privacy_policy(cls):
-        return cls.objects.filter(title__iexact="Privacy Policy").first()
-
-    @classmethod
-    def terms_and_conditions(cls):
         from business.content import TERMS_AND_CONDITIONS
 
         t_and_cond, _ = cls.objects.get_or_create(
