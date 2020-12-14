@@ -12,5 +12,13 @@ class CompanyText(models.Model):
         blank=True,
     )
 
+    @classmethod
+    def terms_and_conditions(cls):
+        return cls.objects.filter(title__iexact="Terms and Conditions").first()
+
+    @classmethod
+    def privacy_policy(cls):
+        return cls.objects.filter(title__iexact="Privacy Policy").first()
+
 
 # Create your models here.
