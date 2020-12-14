@@ -3,7 +3,7 @@ from rest_framework.routers import DefaultRouter
 from .viewsets import CompanyTextViewSet
 
 router = DefaultRouter()
-router.register("companytext", CompanyTextViewSet)
+router.register("business", CompanyTextViewSet)
 
 urlpatterns = [
     path("", include(router.urls)),
