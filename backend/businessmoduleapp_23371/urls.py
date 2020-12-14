@@ -31,6 +31,8 @@ urlpatterns = [
     path("rest-auth/registration/account-confirm-email/<str:key>/", confirm_email),
     path("rest-auth/registration/", include("rest_auth.registration.urls")),
     path("home/", include("home.urls")),
+    path("api/v1/", include("business.api.v1.urls")),
+    path("business/", include("business.urls")),
 ]
 
 admin.site.site_header = "BusinessModuleApp"
