@@ -64,10 +64,11 @@ urlpatterns += [
 
 try:
     import modules
-    urls = Path(modules.__path__[0]).rglob('urls.py')
+    urls = list(Path(modules.__path__[0]).rglob('urls.py'))
     for url in urls:
-        module_name, _ = url.as_posix().split('/')[-2:]
-        urlpatterns += [path(f"modules/{module_name}/", include(f"{module_name}.urls"))]
+        url_parts = url.as_posix().split('/')[-3:-1]
+        urlpatterns += [
+            path(f"{'/'.join(url_parts)}/", include(f"{'.'.join(url_parts)}.urls"))
+        ]
 except (ImportError, IndexError) as err:
-    print(f"ERROR! {str(err)}")
     pass
