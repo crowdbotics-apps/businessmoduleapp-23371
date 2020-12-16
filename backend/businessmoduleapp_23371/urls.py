@@ -68,5 +68,6 @@ try:
     for url in urls:
         module_name, _ = url.as_posix().split('/')[-2:]
         urlpatterns += [path(f"modules/{module_name}/", include(f"{module_name}.urls"))]
-except (ImportError, IndexError):
+except (ImportError, IndexError) as err:
+    print(f"ERROR! {str(err)}")
     pass
